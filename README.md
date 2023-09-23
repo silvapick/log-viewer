@@ -16,7 +16,13 @@ docker-compose exec logs-viewer-app composer install
 3- Crear en enlace simbolico de storage en public
 
 ```sh
-docker-compose exec app_php php artisan storage:link
+docker-compose exec logs-viewer-app artisan storage:link
+```
+
+4- Crear archivo .env
+
+```sh
+docker-compose exec logs-viewer-app cp .env.example .env
 ```
 
 ### Datos conexión base de datos
