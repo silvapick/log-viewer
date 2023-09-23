@@ -1,0 +1,35 @@
+version: '3'
+services:
+  logs-viewer-app:
+    build:
+      context: .
+      dockerfile: dockerfile.php
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - logs-viewer-net
+  logs-viewer-nginx:
+    build:
+      context: .
+      dockerfile: dockerfile.nginx
+    restart: always
+    depends_on:
+      - logs-viewer-app
+    ports:
+      - "8010:80"
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - logs-viewer-net
+  logs-viewer-mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: logs_viewer
+      MYSQL_ROOT_PASSWORD: abc123
+    ports:
+      - "3310:3306"
+    networks:
+      - logs-viewer-net
+networks:
+  logs-viewer-net:
