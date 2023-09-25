@@ -24,4 +24,4 @@ docker-compose exec logs-viewer-app php artisan key:generate
 6. Copiar los archivos de logs en la carpeta `storage/logs`
 
 7. Se ejecuta por el puerto 8010
-   - [http://localhost:8010](http://localhost:8010)
+   - [http://localhost:8010/log-viewer](http://localhost:8010/log-viewer)
